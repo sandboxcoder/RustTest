@@ -3,6 +3,7 @@ mod vector;
 use vector::Vector;
 
 fn main() {
-    let origin: Vector = Vector { x: 5.2, y: 0.4, z: 6.0 };
-    println!("origin ({} {} {})", origin.x, origin.y, origin.z);
+    let a: Vector = Vector { x: 1.0, y: 0.0, z: 0.0 };
+    let b: Vector = Vector { x: 0.0, y: 1.0, z: 0.0 };
+    println!("dot prod a*b ({})", a.dot(b));
 }
