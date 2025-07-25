@@ -1,6 +1,6 @@
-mod vector;
+mod vector3;
 
-use vector::Vector3;
+use vector3::Vector3;
 
 fn main() {
     let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
