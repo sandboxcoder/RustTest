@@ -20,3 +20,15 @@ impl ops::Add<Vector3> for Vector3 {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_dot() {
+        let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
+        let b: Vector3 = Vector3 { x: 0.0, y: 1.0, z: 0.0 };
+        assert_eq!(a.dot(b), 0.0);
+    }
+}
