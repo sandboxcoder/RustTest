@@ -27,8 +27,13 @@ mod tests {
 
     #[test]
     fn test_dot() {
+        // These vectors are orthogonal (perpendicular), so their dot product is zero.
         let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
         let b: Vector3 = Vector3 { x: 0.0, y: 1.0, z: 0.0 };
+        assert_eq!(a.dot(b), 0.0);
+
+        let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
+        let b: Vector3 = Vector3 { x: 0.0, y: 0.0, z: 1.0 };
         assert_eq!(a.dot(b), 0.0);
     }
 }
