@@ -21,6 +21,15 @@ impl ops::Add<Vector3> for Vector3 {
     }
 }
 
+impl PartialEq for Vector3 {
+    fn eq(&self, other: &Self) -> bool {
+        const EPSILON: f32 = 1e-6;
+        (self.x - other.x).abs() < EPSILON &&
+        (self.y - other.y).abs() < EPSILON &&
+        (self.z - other.z).abs() < EPSILON
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -35,5 +44,15 @@ mod tests {
         let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
         let b: Vector3 = Vector3 { x: 0.0, y: 0.0, z: 1.0 };
         assert_eq!(a.dot(b), 0.0);
+    }
+
+    #[test]
+    fn test_add() {
+        // These vectors are orthogonal (perpendicular), so their dot product is zero.
+        let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
+        let b: Vector3 = Vector3 { x: 0.0, y: 1.0, z: 0.0 };
+        let c: Vector3 = a + b;
+        let result: Vector3 = Vector3 { x: 1.0, y: 1.0, z: 0.0 };
+        assert!(c == result);
     }
 }
