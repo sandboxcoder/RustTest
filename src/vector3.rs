@@ -8,6 +8,10 @@ impl Vector3 {
     pub fn dot(&self, other : Vector3) -> f32 {
         return self.x * other.x + self.y * other.y + self.z * other.z;
     }
+
+    pub fn mag(&self) -> f32 {
+        return (self.x*self.x + self.y*self.y + self.z*self.z).sqrt();
+    }
 }
 
 impl ops::Add<Vector3> for Vector3 {
