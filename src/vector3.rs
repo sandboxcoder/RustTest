@@ -1,16 +1,24 @@
 use std::ops;
+use std::fmt;
 pub struct Vector3 {
     pub x: f32, 
     pub y: f32,
     pub z: f32
 }
 impl Vector3 {
-    pub fn dot(&self, other : Vector3) -> f32 {
+    pub fn dot(&self, other : &Vector3) -> f32 {
         return self.x * other.x + self.y * other.y + self.z * other.z;
     }
 
     pub fn mag(&self) -> f32 {
         return (self.x*self.x + self.y*self.y + self.z*self.z).sqrt();
+    }
+
+    pub fn cross(&self, b : &Vector3) -> Vector3 {
+        Vector3 { x: self.y*b.z - self.z*b.y,
+            y: self.z*b.x - self.x*b.z,
+            z: self.x*b.y - self.y*b.x,
+        }
     }
 }
 
@@ -31,6 +39,13 @@ impl PartialEq for Vector3 {
         (self.x - other.x).abs() < EPSILON &&
         (self.y - other.y).abs() < EPSILON &&
         (self.z - other.z).abs() < EPSILON
+    }
+}
+
+impl fmt::Display for Vector3 {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        // Write out the string in the format you want
+        write!(f, "({}, {}, {})", self.x, self.y, self.z)
     }
 }
 
