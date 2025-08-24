@@ -14,6 +14,9 @@ impl Vector3 {
         return (self.x*self.x + self.y*self.y + self.z*self.z).sqrt();
     }
 
+    // The vector cross product (also known as the vector product) is a binary 
+    // operation on two vectors in three-dimensional space, resulting in a third
+    // vector that is mutually perpendicular (orthogonal) to the original two
     pub fn cross(&self, b : &Vector3) -> Vector3 {
         Vector3 { x: self.y*b.z - self.z*b.y,
             y: self.z*b.x - self.x*b.z,
