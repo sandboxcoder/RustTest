@@ -1,5 +1,7 @@
 use std::ops;
 use std::fmt;
+
+#[derive(Clone, Copy, Debug)]
 pub struct Vector3 {
     pub x: f32, 
     pub y: f32,
@@ -61,11 +63,11 @@ mod tests {
         // These vectors are orthogonal (perpendicular), so their dot product is zero.
         let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
         let b: Vector3 = Vector3 { x: 0.0, y: 1.0, z: 0.0 };
-        assert_eq!(a.dot(b), 0.0);
+        assert_eq!(a.dot(&b), 0.0);
 
         let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
         let b: Vector3 = Vector3 { x: 0.0, y: 0.0, z: 1.0 };
-        assert_eq!(a.dot(b), 0.0);
+        assert_eq!(a.dot(&b), 0.0);
     }
 
     #[test]
@@ -76,5 +78,13 @@ mod tests {
         let c: Vector3 = a + b;
         let result: Vector3 = Vector3 { x: 1.0, y: 1.0, z: 0.0 };
         assert!(c == result);
+    }
+
+    #[test]
+    fn test_mag() {
+        // These vectors are orthogonal (perpendicular), so their dot product is zero.
+        let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
+        let result: f32 = 1.0;
+        assert!(a.mag() == result);
     }
 }
