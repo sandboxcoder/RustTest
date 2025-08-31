@@ -38,6 +38,17 @@ impl ops::Add<Vector3> for Vector3 {
     }
 }
 
+impl ops::Sub<Vector3> for Vector3 {
+    type Output = Vector3;
+
+    fn sub(self, _rhs: Vector3) -> Vector3 {
+        Vector3 { x: self.x - _rhs.x,
+            y: self.y - _rhs.y,
+            z: self.z - _rhs.z,
+        }
+    }
+}
+
 impl PartialEq for Vector3 {
     fn eq(&self, other: &Self) -> bool {
         const EPSILON: f32 = 1e-6;
@@ -87,6 +98,16 @@ mod tests {
         let b: Vector3 = Vector3 { x: 0.0, y: -1.0, z: 0.0 };
         let c: Vector3 = a + b;
         let result: Vector3 = Vector3 { x: -1.0, y: -1.0, z: 0.0 };
+        assert!(c == result);
+    }
+
+   #[test]
+    fn test_sub() {
+        // These vectors are orthogonal (perpendicular), so their dot product is zero.
+        let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
+        let b: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
+        let c: Vector3 = a - b;
+        let result: Vector3 = Vector3 { x: 0.0, y: 0.0, z: 0.0 };
         assert!(c == result);
     }
 
