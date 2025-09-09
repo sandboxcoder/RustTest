@@ -20,7 +20,8 @@ impl Vector3 {
     // operation on two vectors in three-dimensional space, resulting in a third
     // vector that is mutually perpendicular (orthogonal) to the original two
     pub fn cross(&self, b : &Vector3) -> Vector3 {
-        Vector3 { x: self.y*b.z - self.z*b.y,
+        Vector3 {
+            x: self.y*b.z - self.z*b.y,
             y: self.z*b.x - self.x*b.z,
             z: self.x*b.y - self.y*b.x,
         }
@@ -31,7 +32,8 @@ impl ops::Add<Vector3> for Vector3 {
     type Output = Vector3;
 
     fn add(self, _rhs: Vector3) -> Vector3 {
-        Vector3 { x: self.x + _rhs.x,
+        Vector3 {
+            x: self.x + _rhs.x,
             y: self.y + _rhs.y,
             z: self.z + _rhs.z,
         }
@@ -42,7 +44,8 @@ impl ops::Sub<Vector3> for Vector3 {
     type Output = Vector3;
 
     fn sub(self, _rhs: Vector3) -> Vector3 {
-        Vector3 { x: self.x - _rhs.x,
+        Vector3 {
+            x: self.x - _rhs.x,
             y: self.y - _rhs.y,
             z: self.z - _rhs.z,
         }
