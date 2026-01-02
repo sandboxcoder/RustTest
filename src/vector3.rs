@@ -52,6 +52,18 @@ impl ops::Sub<Vector3> for Vector3 {
     }
 }
 
+impl ops::Mul<f32> for Vector3 {
+    type Output = Vector3;
+
+    fn mul(self, _rhs: f32) -> Vector3 {
+        Vector3 {
+            x: self.x * _rhs,
+            y: self.y * _rhs,
+            z: self.z * _rhs,
+        }
+    }
+}
+
 impl PartialEq for Vector3 {
     fn eq(&self, other: &Self) -> bool {
         const EPSILON: f32 = 1e-6;
@@ -124,5 +136,12 @@ mod tests {
         let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
         let result: f32 = 1.0;
         assert!(a.mag() == result);
+    }
+
+    #[test]
+    fn test_mul() {
+        let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
+        let result: Vector3 = Vector3 { x: 2.0, y: 0.0, z: 0.0 };
+        assert!(a * 2.0 == result);
     }
 }
