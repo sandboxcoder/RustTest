@@ -123,10 +123,16 @@ mod tests {
    #[test]
     fn test_sub() {
         // These vectors are orthogonal (perpendicular), so their dot product is zero.
-        let a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
-        let b: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
-        let c: Vector3 = a - b;
-        let result: Vector3 = Vector3 { x: 0.0, y: 0.0, z: 0.0 };
+        let mut a: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
+        let mut b: Vector3 = Vector3 { x: 1.0, y: 0.0, z: 0.0 };
+        let mut c: Vector3 = a - b;
+        let mut result: Vector3 = Vector3 { x: 0.0, y: 0.0, z: 0.0 };
+        assert!(c == result);
+
+        a = Vector3 { x: 1.0, y: 1.0, z: 1.0 };
+        b = Vector3 { x: 0.5, y: 0.5, z: 0.5 };
+        c = a - b;
+        result = Vector3 { x: 0.5, y: 0.5, z: 0.5 };
         assert!(c == result);
     }
 
