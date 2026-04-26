@@ -134,6 +134,13 @@ mod tests {
         c = a - b;
         result = Vector3 { x: 0.5, y: 0.5, z: 0.5 };
         assert!(c == result);
+
+        // test negative numbers
+        a = Vector3 { x: 1.0, y: 1.0, z: 1.0 };
+        b = Vector3 { x: 1.5, y: 0.5, z: 0.5 };
+        c = a - b;
+        result = Vector3 { x: -0.5, y: 0.5, z: 0.5 };
+        assert!(c == result);
     }
 
     #[test]
